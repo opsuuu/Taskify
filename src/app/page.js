@@ -198,7 +198,7 @@ export default function Home() {
               />
             </div>
             <div
-              className={`btn d-inline-flex align-items-center rounded-pill ${styles.myBtn}`}
+              className={`btn btn-warning d-inline-flex align-items-center rounded-pill ${styles.myBtn}`}
               onClick={() => {
                 setModalShow(true);
                 // 清除編輯任務
@@ -212,10 +212,10 @@ export default function Home() {
         </div>
         <div className="mt-4">
           {!searchStatus && (
-            <div className="d-flex">
+            <div className="d-flex my-4">
               {!hideComplete && (
                 <div
-                  className={`btn me-2 ${styles.myBtn}`}
+                  className={`btn btn-warning  me-2 ${styles.myBtn}`}
                   onClick={() => {
                     setHideComplete(true);
                     handleHideComplete();
@@ -227,7 +227,7 @@ export default function Home() {
               )}
               {hideComplete && (
                 <div
-                  className={`btn me-2 ${styles.showBtn}`}
+                  className={`btn btn-warning  me-2 ${styles.showBtn}`}
                   onClick={() => {
                     setHideComplete(false);
                     handleHideComplete();
