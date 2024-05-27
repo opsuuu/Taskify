@@ -83,6 +83,8 @@ export default function Home() {
     setQueryDatas([]);
   };
 
+  
+
   //   用戶點下一頁
   const handlePageClick = (e) => {
     const newOffset = e.selected * itemsPerPage;
@@ -257,7 +259,7 @@ export default function Home() {
           <div>
             <ModalTask
               show={modalShow}
-              onHide={() => setModalShow(false)}
+              setModalShow={setModalShow}
               refreshDatas={refreshDatas}
               taskToEdit={taskToEdit}
               setAllDatas={setAllDatas}

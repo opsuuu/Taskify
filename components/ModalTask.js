@@ -8,7 +8,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 const ModalTask = ({
   show,
-  onHide,
+  setModalShow,
   refreshDatas,
   taskToEdit,
   setAllDatas,
@@ -30,6 +30,13 @@ const ModalTask = ({
       setDescription("");
     }
   }, [taskToEdit]);
+
+  const handleClose = () => {
+    setTaskName("");
+    setDescription("");
+    setValidate(true);
+    setModalShow(false);
+  };
 
   const handleSave = async () => {
     if (taskName === "") {
@@ -80,9 +87,7 @@ const ModalTask = ({
       if (saveReponse.ok) {
         const updateTask = await saveReponse.json();
         toast.success(taskToEdit ? "編輯成功！" : "新增成功");
-        setTaskName("");
-        setDescription("");
-        onHide();
+        handleClose();
         setAllDatas((prevDatas) => {
           const updatedData = [
             updateTask,
@@ -112,7 +117,6 @@ const ModalTask = ({
       aria-labelledby="contained-modal-title-vcenter"
       centered
       show={show}
-      onHide={onHide}
       className="text-black"
     >
       <Modal.Header>
@@ -159,7 +163,7 @@ const ModalTask = ({
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="danger" onClick={onHide}>
+        <Button variant="danger" onClick={handleClose}>
           取消
         </Button>
         <Button variant="primary" onClick={handleSave}>
